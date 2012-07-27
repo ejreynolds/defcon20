@@ -1,0 +1,31 @@
+Bluetooth is a freq monitoring protocol.
+
+Bluetooth Stack
+ - BTBB = bluetooth baseband
+ - airtraffic between master and slave BT devices
+
+BT mac:
+  nap
+    - non-significant for communication
+    - vendor association
+    - this is good, because very difficult to obtain by passive monitoring
+  uap
+    - 
+  lap
+    - lower address space
+    - easy to get!
+
+Project Hardware
+  - UBERTOOTH
+  - USB dongle capable of sending / receiving data on the BT baseband
+  - Ubertooth software providers Kismet plugin, which creates pcap dumps
+
+libbtbb
+  - wireshark plugin
+
+Scapy!
+  - Scapy-BTBB
+  - Wrote something akin to Tail.  monitors kismet pcap file live
+
+Doing a demo in IP[y] Notebook (neat tool)
+
