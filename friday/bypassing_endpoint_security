@@ -1,0 +1,49 @@
+Bypassing Endpoint Security for $20 or Less
+Philip A. Polstra, Sr.
+@ppolstra
+ppolstra.blogspot.com
+
+Standard Device Classes:
+  - HID
+  - Printer
+  - Audio
+  - Mass Storage Devices
+
+Endpoint:
+  - Virtual wire for USB connection
+  - Unidirectional
+  - Packet fragmentation, handshaking, etc done by hardware (usually)
+  - High bit of address tells direction (1=in,0=out)
+  - Types of endpoings:
+    * Control
+    * Bulk transport
+    * Interrupt
+    * isochronous
+
+Control Endpoints:
+  - Pirmary mech for most devices to comunicate with host
+  - Every device must have at least one in and out control enpoint EP0
+  - Device must respond to standard equests
+    * get/set address, descriptors, power and status
+  - Device may respond to class specific requests
+  - 3 transport stages: setup, data, status
+ 
+ Bulk Endpoints:
+  - No latency guarantees
+  - Good perf on idle bus
+  - Superceeded by all other transport types
+  - Full (8-64byte packets) & high-speed (512 byte packets only)
+  - Used extensively in USB flash drives (and ext. hard drives)
+
+Descriptors:
+  - The describe things
+  - Have a standard format
+    * 1st byte is the length in bytes
+    * 2nd byte determines type of descriptor
+    * Remaining bytes are descriptor itself
+  - Common types
+    * device: tells you basic info about the device
+    * Configuration
+    * etc
+
+
