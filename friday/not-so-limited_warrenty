@@ -1,0 +1,31 @@
+Not-so-limited Warranty: Target Attacks on warranties for fun and profit
+
+Demo code is on conference DVD
+
+Who is this talk for?
+  - Social eng = yes
+  - like finding holes in stuff
+
+What is a serial number
+
+C# Proof of concept
+  - generates valid apple serial number
+  - plugs it into apple's warrenty checker
+
+How people get serial numbers?
+  - Google
+  - calling people on craigslist
+  - emailing people on ebay
+  - Stores (flip over demo models)
+
+Examples of Security
+  - Lenovo
+    * has batch uploader
+      - can get country, model, make, year, etc
+  - Amazon (Kindles)
+    * as many attempts as you want
+      - everytime you get the code right, you get a month of amazon prime
+    * $2 protection per device
+  - Apple
+    * easy to generate
+    * hold full amount
