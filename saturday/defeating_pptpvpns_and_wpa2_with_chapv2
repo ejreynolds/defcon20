@@ -1,0 +1,101 @@
+Defeating PPTP VPNs and WPA2 with CHAPv2
+"An MS-CHAPv2 attack with a 100% success rate"
+
+MS-CHAPv2
+"M$... the designer of such illustrious protocols such as NetBIOS... they did not stop there"
+
+  - Mutual Auth
+    * the rserver can verify the client is who they say they are
+    * the client can veirfy the server is who they say they are
+  - Key agreement
+    * set up encyrpted session after handshake is complete
+  - 1999 (just an update to v1)
+
+PPTP VPNs and WPA2 Enterprise
+
+Historically, dictionary attacks.
+  packet capture + asleap = offline dictionary attack
+
+  Schnier published a paper.  Security protocol is as good as the users password.
+
+Reasonable -- as long as you have a good password.  Thus, EVERYBODY (most VPN providers) still supports PPTP
+
+WPA2 Enterprise... very common... including DEFCON Wireless Network!
+
+Wildly supported (Ubuntu has it OOB), People use it, supported = vicious cycle
+
+Internals
+  - Lots of ridiculousness
+  - Everything is known (or can be derived) form stuff sent in the clear
+  - Leaves us with...
+    NTHash = MD4(UserPassword)
+    ChallangeResponse = DES 3 times using parts of NTHash
+  - DES
+    * Every 8th bit is parity bit.
+    * Thus, key space of 2^56.
+  - 3DES
+    DES(DES(DES(P1, K1), K2), K3)
+
+    complexity = 2^56 * 2^56 * 2^56
+               = 2^168
+               ~= 3.7e50
+  
+  - But yet... they didn't do 3DES.  They did DES+DES+DES
+      complexity = 2^56 + 2^56 + 2^56 ~= 2^57.59
+
+  - 3 x DES keys... need 21 bytes of key.
+  - but MD4 is 16 bytes...
+    Microsoft pads out the last 5 bytes of the key..... 
+    So Key 3 is only two bytes long. LOL
+    ??00000
+
+  - Can eliminate 3rd key.  so left with 2^57 for complexity
+
+  ChallangeResponse = DES1 + DES2
+
+  - Naive implementation = just iterate through all keys (brute force).
+    * the DES operations are expensive!
+  - Can iterate through keyspace once, and just do two compares.  
+    now complexity is 2^56
+
+    Can reduce MSCHAPv2 to a SINGLE DES encryption
+
+David Hulton
+  - A look as DES
+    * Designed to work in hardware
+  - P-box is still hard to do in software
+    * but in ASIC, it's almost free (just routing lines)
+  - What about FPGAs?
+    * /yes/
+    * Just use a Verlilog "assign" statement to define the paths for the P box
+  - DES on FPGA
+    * Pipelined (one DES operation every clock cycle)
+    * 40 cores @ 450MHz = 18 billion keys / sec
+    With 256 FPGAs, worst case crack is 23 hours!
+
+    Equivalent perf: on CPU = 80,000 CPUs.  on GPU = 1,800 GPUs for 24 hours
+
+  - Can we make it faster though?
+    * Opt1
+      - use BlockRAM to store configuration
+      - This saves slice resources
+    * Opt2
+      - create minimal bus to return back if a key is found
+      - based on the crack time we can easily deduce the key
+    * Opt3
+      - JTAG has commands to read/write to BRAM
+      - eliminate the bus interface entirely!
+        * don't have to waste routing!
+        * still in progress
+
+chapcrack
+  - Point at a PCAP, and it'll pull out any handshakes that exist in the captures
+  - It'll even crack the 3rd key for you!
+  - Usename, etc.
+  - CloudCracker Submission
+    * Online Password Cracker
+    * Results < 1 day
+
+Moxie Marlinspike / www.thoughtcrime.org / @moxie
+David Hulton / www.picocomputing.com / @0x31337
+
