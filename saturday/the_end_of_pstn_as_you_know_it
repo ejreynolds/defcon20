@@ -1,0 +1,90 @@
+The End of the PSTN As You Know It
+ViperLab (www.viperlab.net) - Aqcuired by Avaya
+
+Why do we have to go through a carrier to talk to other VoIP peers?
+
+ENUM DNS Record
+  - Maps E.164 tele numbers to a SIP URI
+  - Low adoption
+
+SIP Peering using DNS SRV
+  - Everybody use DNS for SIP Peering
+    * cna intercon all "islands of VOIP" directly between orgs using DNS
+    * DNS build for HA and load balancing
+  - There's an RFC for using this for SIP.
+  - DNS SRV load balancing
+
+Measure growth of SIP peering on IPv4, over time.
+  - Prolif of DNS SRV records
+  - Prolif of ENUM records
+
+enumerator
+  - enumerator.sourceforge.net
+  - Can be used for R&D and VoIP pen testing
+  - Partial support for Microsoft targets
+
+292 million domains
+
+8.7 million domains support SIP via DNS SRV
+
+Can do e.164 numbers and returns the SIP address (if found)
+
+UC Federation
+  - Cisco
+    * Uses PSTN initially
+  - Microsoft
+    * Lync!
+    * They did their research on it
+  - Matt Landis' Federation Directory
+    * 9705 domains 
+      - Canada, USA, Norway
+  - LyncDirectory.com
+
+Lync Federation Types
+  - Dynamic (SRV Discovery)
+  - Enhanced / Direct Federation (Whitelist)
+  - Blacklist
+
+LyncSpoof
+  - Acts as a legitimate Lync client and connects to Lync front-end server
+  - Uses NTLM auth and message signing
+  - Can be used to flood and lock up a Lync client
+
+Federator
+  - Acts as a legitimate Lync Server and connects to another Lync Server via Federation
+  - Requires a cert from a Public CA
+
+SIP TLS Proxy Tool
+  - Objective 1: Decrypt the SIP TLS message flow and learn how it works (complete)
+  - Objective 2: Fiddle with it, resign, and continue traffic flow
+
+http://enumerator.sourceforge.net
+
+Open Source UC Federation
+  - Can be used for inexpensive and out of band ocmmunication between groups of friends.
+  - Can be used for audio, video, and instant messaging
+  - Saves money by using open source software for servers and end points
+  - Similar architecture to Lync, without the sepearte frontend/backend servers.
+  - SIP TLS / SRTP for privacy
+  - Asterisk Federation
+    * SRV Lookups
+    * No need for SIP trunks to terminate calls at the PSTN
+    * This means no long distance / international fees between federated users
+
+SIP Federation Project
+  - Linodes!
+  - Configuration files available at the enumerator website.
+
+Conclusion
+  - IP QoS
+    * Fantastic quality on WiFi, 3G, etc.
+    * B2BUA - Back to Back user agent
+      - RTP Media Anchoring
+      - Poor Man's SBC
+    * Host your own SIP for your organization using DNS SRV using your domain (on a $20 / linode)
+    * Peer directly to other organizations
+    * Keep your carrier SIP trunk, for access to legacy PSTN
+
+webrtc
+
+Copy of presentation is on the Sourceforge website.
