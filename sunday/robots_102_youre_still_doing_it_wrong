@@ -1,0 +1,44 @@
+Robots 102, You're still doing it wrong
+Katy Levinson
+
+Input is hard
+  - IR sucks with mirrors
+  - Modern cameras emit a ton of IR and break all the things
+    * Sunglasses = filter IR
+  - Ultrasonic Rangefinder
+    * Suck with fuzzy things
+  - Perception of reality is difficult
+    * Don't take raw data!
+  - The walls bend
+    * Beams bounce, make corner look farther away
+  - LIDAR
+    * Awesome!
+    * Expensive
+    * Want to fix that second bit
+  - Don't mount your compass next to your motor :-P
+  - PID Concept
+    * Proportion
+    * Integration
+    * Derivative
+
+    ap + bi + cd = output
+
+  - Velocity control
+    * Set the i multiplier to zero
+  - Servos
+    * Limited to one rotation
+    * just tell them to the position and they go
+  - Pneumatics
+    * Use air
+    * open system
+    * barring expensive things only have two positions
+  - Hydraulics
+    * Messy when broken
+    * Many positions
+    * closed system
+  - Can use camera phone to check IR
+    * Make sure your camera phone doesn't have an IR filter
+  - 4 bar linkages are awesome
+  - Know your substrates when using adhesives! (duh)
+
+
