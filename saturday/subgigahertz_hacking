@@ -1,0 +1,25 @@
+<GHz Wireless
+
+ISM: Industrial, Scientific, and Medical
+
+US ISM Bands:
+  - 300
+  - 433
+  - 915
+
+Wireless power meters... 
+
+cc1111: microcontroller, radio, usb all in one.
+
+RFCAT: uses CC111x on some common dongles
+  - chronus dongle
+  - "Don's Dongles" aka TI CC1111EMK
+  - IMME (currently limited to sniffer / detection firmware)
+
+Radio Info we want to know:
+  - Frequency
+  - Modulation
+  - Baud Rate
+  - etc etc etc
+
+

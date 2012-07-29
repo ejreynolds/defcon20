@@ -1,0 +1,56 @@
+The Darknet of Things: Building Sensor Networks to do our bidding.
+
+Sensor Networks
+  - take information
+  - pass it around
+  - sometime compute
+  - send it back to central node
+
+6LowPAN
+  - 802.15.4 (Yup, runs on top of ZigBee MAC)
+    * IPv6 for low power wireless
+    * Advantages
+      - very very large address space
+      - all addressable
+      - all pingable
+    * Limitations
+      - high latency
+      - low bandwidth
+    
+A Darknet of Things
+  - Build the largest free-roaming sensor network in the world (DC21?)
+
+Considerations
+  - No Arduino!
+  - Processors aren't really powerful to do anything interesting anyways
+  - Must be hackable!
+
+The Hardware (Darknet Badge)
+  - 2 ARM Microprocessors (1 main, 1 network)
+  - USB (2 ports, host and client)
+  - 2.8" TFT Touch Screen
+  - 6LowPan Network Connectivity
+  - Battery Powered and Rechargable
+  - TFT Controller
+  - SD Card slot
+  - JTAG Header
+  - Network only development boards
+    * Designed to be attached to and drive you rpojects
+    * UARTs, SPI, I2c(?) exposed
+    * 1 x MC1322v
+    * JTAG Header
+  - McMote
+    * 1" circle
+    * Chip + battery + LED
+    * CR2032 powered
+    * UART for expansion (direct FT232R module compat)
+  - DevBoards and APs
+    * MC13224v to Ethernet (McNic)
+      - Small form factor
+      - AP style operation
+        * 6LowPAN -> Ethernet
+
+  -McMote = ~$15 BOM in small quantity
+
+  ipv6.he.net
+  Free tunnel from Hurricaine Electric
