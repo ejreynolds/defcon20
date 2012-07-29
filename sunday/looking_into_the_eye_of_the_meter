@@ -1,0 +1,71 @@
+Looking into the eye of the meter
+Don C. Weber (@cutaway) 
+InGuardians, Inc.
+
+TerminMeter? Google Code.
+Spencer Macintire
+
+6 or 7 different types out there (the main ones)
+
+AMI = Advanced Metering Infrastructures
+
+http://inguardians.com/pub/AMI_Attack_Methodology.pdf
+
+Criminal Interest
+  - Free or Reduced Energy (has already occured via optical port)
+  - Corporate Espionage
+  - Access to back-end resources
+  - Non-kinetic attack
+  - Hacktivism
+
+Aggregator on Poletop
+
+IFixIt SmartMeter teardown
+
+Dumping Memory
+  - Total Phase Aardvark Flash Utility
+  - Custom extractors
+  - Xeltek SuperPro 5000 plus Adapter
+
+The Good Fed 
+Custom Extractors
+
+Memory Layout Logic
+   - C12.19 Tables in Transit
+    * Standard tables - formatted and documented
+    * Manufacturer tables - formatted but not externally documented
+  - Custom
+
+Data In Motion
+  - Component to component
+  - Board to Board
+  - They're only going to pass the most important data!
+
+Logic Analyzer
+
+Tapping lines is a pain -- look for debugging path!
+
+C12.18
+  - is okay - because you know what you are getting
+
+C12.21
+  - is worse - because people think it is "secure"
+
+C12.22
+  - ANSI committee has stated vnendors should be implementing this
+
+ANSI Type 2 Optical Port
+  Probe-TEC - $350 online.
+  /dev/ttylUSB0 via FTDI chip
+
+Open Source Optical Probe
+  IguanaWorks
+
+OptiGuard - A Smart Meter Assessment Toolkit
+
+The Eye Chart
+  12277 x 2 seconds = 409 minutes = 6.8 hours
+  Are failed logons logged?
+  Does the meter return error after N attempts?
+
+
